@@ -8,6 +8,7 @@ var ejsmate = require('ejs-mate');
 
 var app = express();
 
+app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -31,25 +32,8 @@ mongoose.connect('mongodb://root:!nd1aCraft5@ds121312.mlab.com:21312/indiacrafts
     }
 });
 
-app.get('/', function (req, res) {
-    res.render('main/home');
-});
+var mainRoutes = require('./routes/main');
+var userRoutes = require('./routes/user');
 
-
-app.get('/about', function (req, res) {
-    res.render('main/about');
-});
-
-app.post('/create-user', function (req, res, next) {
-
-    var user = new User();
-    user.profile.name = req.body.name;
-    user.password = req.body.password;
-    user.email = req.body.email;
-    user.save(function (err) {
-        if (err) {
-            return next(err);
-        }
-        res.json('succefully created new user');
-    });
-});
+app.use(mainRoutes);
+app.use(userRoutes);
