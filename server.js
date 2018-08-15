@@ -32,12 +32,12 @@ mongoose.connect('mongodb://root:!nd1aCraft5@ds121312.mlab.com:21312/indiacrafts
 });
 
 app.get('/', function (req, res) {
-    res.render('home');
+    res.render('main/home');
 });
 
 
 app.get('/about', function (req, res) {
-    res.render('about');
+    res.render('main/about');
 });
 
 app.post('/create-user', function (req, res, next) {

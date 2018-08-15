@@ -11,9 +11,14 @@
 </head>
 
 <body>
-    <h1>this is a boilerplate</h1>
 
-    <%- body -%>
+    <% include ./partials/navbar %>
+
+        <h1>this is a boilerplate</h1>
+
+        <%- body -%>
+
+            <% include ./partials/footer %>
 </body>
 
 </html>
