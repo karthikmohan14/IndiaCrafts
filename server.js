@@ -5,6 +5,9 @@ var User = require('./models/user');
 var bodyParser = require('body-parser');
 var ejs = require('ejs');
 var ejsmate = require('ejs-mate');
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
+var flash = require('express-flash');
 
 var app = express();
 
@@ -14,6 +17,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+app.use(cookieParser());
+app.use(session({
+    resave: true,
+    saveUninitialized: true,
+    secret: "IndiaCrafts"
+}));
+app.use(flash());
+
 app.engine('ejs', ejsmate);
 app.set('view engine', 'ejs');
 
