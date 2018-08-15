@@ -3,6 +3,9 @@ var morgan = require('morgan');
 var mongoose = require('mongoose');
 var User = require('./models/user');
 var bodyParser = require('body-parser');
+var ejs = require('ejs');
+var ejsmate = require('ejs-mate');
+
 var app = express();
 
 app.use(morgan('dev'));
@@ -10,6 +13,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+app.engine('ejs', ejsmate);
+app.set('view engine', 'ejs');
 
 app.listen(3000, function (err) {
     if (err) {
@@ -26,10 +31,9 @@ mongoose.connect('mongodb://root:!nd1aCraft5@ds121312.mlab.com:21312/indiacrafts
     }
 });
 
-// app.get('/', function (req, res) {
-//     var message = "welcome";
-//     res.json(message);
-// });
+app.get('/', function (req, res) {
+    res.render('home');
+});
 
 
 // app.get('/about', function (req, res) {
