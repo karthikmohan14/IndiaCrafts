@@ -36,9 +36,9 @@ app.get('/', function (req, res) {
 });
 
 
-// app.get('/about', function (req, res) {
-//     res.json("welcome to about page");
-// });
+app.get('/about', function (req, res) {
+    res.render('about');
+});
 
 app.post('/create-user', function (req, res, next) {
 
