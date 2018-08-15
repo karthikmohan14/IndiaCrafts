@@ -10,7 +10,9 @@
   "author": "karthik",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "express": "^4.16.3",
+    "mongoose": "^5.2.8",
     "morgan": "^1.9.0"
   }
 }
