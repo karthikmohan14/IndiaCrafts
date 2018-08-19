@@ -11,6 +11,9 @@ var flash = require('express-flash');
 
 var app = express();
 
+var secret = require('./config/secret');
+
+
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
@@ -21,7 +24,7 @@ app.use(cookieParser());
 app.use(session({
     resave: true,
     saveUninitialized: true,
-    secret: "IndiaCrafts"
+    secret: secret.secretKey
 }));
 app.use(flash());
 
@@ -32,10 +35,10 @@ app.listen(3000, function (err) {
     if (err) {
         throw err;
     }
-    console.log("server is running");
+    console.log("server is running on port : " + secret.port);
 });
 
-mongoose.connect('mongodb://root:!nd1aCraft5@ds121312.mlab.com:21312/indiacrafts', function (err) {
+mongoose.connect(secret.database, function (err) {
     if (err) {
         console.log(err);
     } else {
