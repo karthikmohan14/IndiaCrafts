@@ -8,11 +8,12 @@ var ejsmate = require('ejs-mate');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var flash = require('express-flash');
+var MongoStore = require('connect-mongo')(session);
+var passport = require('passport');
 
 var app = express();
 
 var secret = require('./config/secret');
-
 
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
@@ -24,7 +25,11 @@ app.use(cookieParser());
 app.use(session({
     resave: true,
     saveUninitialized: true,
-    secret: secret.secretKey
+    secret: secret.secretKey,
+    store: new MongoStore({
+        url: secret.database,
+        autoReconnect: true
+    })
 }));
 app.use(flash());
 
