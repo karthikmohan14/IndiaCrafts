@@ -20,7 +20,38 @@
                     <line x1="21" y1="21" x2="15.8" y2="15.8"></line>
                 </svg>
             </button>
-            <a class="btn btn-sm btn-outline-secondary" href="/signup">Sign up</a>
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <% if (!user) { %>
+                    <li>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Signup / Login</a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/signup">Signup</a>
+                            </li>
+                            <li>
+                                <a href="/login">Login</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <% } else { %>
+                        <li>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <%= user.profile.name %>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/profile">Profile</a>
+                                </li>
+                                <li>
+                                    <a href="/logout">Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <% } %>
+            </ul>
+
         </div>
     </div>
 </header>

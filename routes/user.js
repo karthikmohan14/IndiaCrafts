@@ -19,6 +19,11 @@ router.post('/login', passport.authenticate('local-login', {
 }));
 
 
+router.get('/logout', function (req, res, next) {
+    req.logout();
+    res.redirect('/');
+});
+
 router.get('/profile', function (req, res, next) {
     User.findOne({
         _id: req.user._id
