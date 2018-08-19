@@ -1,0 +1,67 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/img/heart.ico">
+
+    <title>SignIn</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/userlogin.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://getbootstrap.com/docs/4.1/examples/sign-in/signin.css"> -->
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/17999B39-EC52-2C42-9269-ADCB203A647D/main.js"
+        charset="UTF-8"></script>
+    <link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/8472E832-79D9-F546-B37B-3C54B0DDC5C0/abn/main.css"
+    />
+</head>
+
+<body class="text-center">
+    <% if(errors.length > 0) { %>
+
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">
+                    &times;
+                </span>
+            </button>
+            <%= errors%>
+        </div>
+
+        <% } %>
+
+            <form class="form-signin" method="post">
+                <img class="mb-4" src="/img/heart.svg" alt="" width="72" height="72">
+                <h1 class="h3 mb-3 font-weight-normal">Please enter details to sign up</h1>
+                <label for="inputName" class="sr-only">Full Name</label>
+                <input type="text" name="name" class="form-control" placeholder="Full Name" required autofocus>
+
+                <label for="inputEmail" class="sr-only">Email address</label>
+                <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus>
+
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Password" required>
+
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+            </form>
+            <div class="form-signin">
+                <p></p>
+                <p>have an account already?</p>
+                <button class="btn btn-lg btn-primary btn-block" href="/signin">
+                    <a href="/signin">Sign in</a>
+                </button>
+                </form>
+                <% include ../partials/footer %>
+</body>
+
+</html>
